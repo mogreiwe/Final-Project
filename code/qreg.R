@@ -34,4 +34,4 @@ data <- merge(data,hp)
 rqfit1 <- rq(gdp_f~gdp+nfci+cg+cr+ts+hp, data = data)
 rqfit2 <- rq(gdp_f~gdp+poly(nfci,2)+cg+cr+ts+hp, data = data)
 
-stargazer(list(rqfit1, rqfit2), title=c("(1)","(2)"))
+stargazer(list(rqfit1, rqfit2), title=c("(1)","(2)"), out = "output\\tables\\table.tex")

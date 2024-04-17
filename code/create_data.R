@@ -1,6 +1,4 @@
-# Forecast horizon
-h <- 4
-
+# Read in data
 nfci <- read.csv("brownlees\\gar-replication\\data\\input\\nfci.csv")
 setnames(nfci, old = "USA", new = "nfci")
 nfci_us <- nfci[, c("Dates", "nfci")]

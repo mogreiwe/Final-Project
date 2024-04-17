@@ -1,7 +1,4 @@
-# Parameters
-sigma_u = 1.257
-beta = 0.529
-gamma = 0.044
+## Script to run simulation exercise on GARCH(1,1)
 
 # Load data
 data <- read.csv("data\\data.csv")
@@ -29,10 +26,10 @@ data[,"gdp_fit"] <- m1$coefficients[1] + m1$coefficients[2]*data[,"gdp"] + m1$co
 data[,"gar_est"] <- data[,"gdp_fit"] + data[,"quant_it"]
 
 # Create plots
-ggplot(data, aes(x = nfci, y = gar_est)) + geom_point() + theme_bw() + ylab(expression(GaR[.05]^{t+4})) + xlab("NFCI") + labs(title="h=4, n=100") + theme(plot.title = element_text(hjust = 0.5))
+ggplot(data, aes(x = nfci, y = gar_est)) + geom_point() + theme_bw() + ylab(expression(GaR[.05]^{t+4})) + xlab("NFCI") + labs(title="h=1, n=100") + theme(plot.title = element_text(hjust = 0.5))
 ggsave("output\\figures\\plot_raw.png")
 
-ggplot(data, aes(x = nfci, y = gar_est)) + geom_point() + theme_bw() + ylab(expression(GaR[.05]^{t+4})) + xlab("NFCI") + labs(title="h=4, n=100") + theme(plot.title = element_text(hjust = 0.5)) +
+ggplot(data, aes(x = nfci, y = gar_est)) + geom_point() + theme_bw() + ylab(expression(GaR[.05]^{t+4})) + xlab("NFCI") + labs(title="h=1, n=100") + theme(plot.title = element_text(hjust = 0.5)) +
   geom_smooth(method='lm', formula= y~x, se = FALSE) + geom_smooth(method='lm', formula= y~poly(x,2), se = FALSE, color = "red")
 ggsave("output\\figures\\plot_lmfit.png")
   
